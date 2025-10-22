@@ -24,6 +24,11 @@ import {
   configQueryInputSchema,
   configQueryOutputSchema,
 } from './tools/configQuery.js';
+import {
+  updateGeminiDocs,
+  updateDocsInputSchema,
+  updateDocsOutputSchema,
+} from './tools/docUpdater.js';
 
 // Set log level from environment
 if (process.env.DEBUG === 'true') {
@@ -100,6 +105,23 @@ async function main() {
 
   logger.debug('Registered tool: query_gemini_config');
 
+  // Register documentation refresh tool
+  server.registerTool(
+    'update_gemini_docs',
+    {
+      title: 'Refresh Gemini CLI Documentation Cache',
+      description:
+        'Downloads the latest documentation from geminicli.com/llms.txt and rebuilds the local search index.',
+      inputSchema: updateDocsInputSchema,
+      outputSchema: updateDocsOutputSchema,
+    },
+    async () => {
+      return await updateGeminiDocs();
+    }
+  );
+
+  logger.debug('Registered tool: update_gemini_docs');
+
   logger.info('All tools registered successfully');
 
   // Create stdio transport
@@ -115,6 +137,7 @@ async function main() {
   logger.info('  - search_gemini_docs: Search Gemini CLI documentation');
   logger.info('  - configure_gemini_cli: Edit Gemini CLI configuration');
   logger.info('  - query_gemini_config: Query Gemini CLI configuration');
+  logger.info('  - update_gemini_docs: Refresh local documentation cache');
 
   // Handle process termination
   process.on('SIGINT', async () => {

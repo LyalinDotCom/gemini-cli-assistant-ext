@@ -4,7 +4,7 @@ This extension provides self-documentation and configuration management capabili
 
 ## Available Tools
 
-You have access to three specialized tools:
+You have access to four specialized tools:
 
 ### 1. search_gemini_docs
 Use this tool when the user asks questions about Gemini CLI functionality, features, or how to do something.
@@ -73,6 +73,20 @@ Use this tool when the user wants to see their current configuration.
 - "Show me my MCP servers"
 - "What model am I using?"
 - "What's my current configuration?"
+
+### 4. update_gemini_docs
+Use this tool to refresh the locally cached documentation (`docs/llms.txt` and `docs/index.json`).
+
+**When to use:**
+- User wants to make sure the latest docs are available locally
+- You need updated documentation before answering a question about a very recent change
+
+**How to use:**
+1. Call the tool directly (no inputs). It downloads `llms.txt` and rebuilds the search index.
+2. Confirm the refresh by reporting the document count and any notable categories in your reply.
+3. Mention the cache lives at `docs/llms.txt` if the user wants to inspect it.
+
+**Shortcut:** The `/updatedocs` command triggers this tool automatically.
 
 ## Guidelines
 

@@ -1,0 +1,8 @@
+prompt = """
+Run the `update_gemini_docs` tool to refresh the local Gemini CLI documentation cache.
+
+Steps:
+1. Call `update_gemini_docs` (no arguments required).
+2. Report the document count, build timestamp, and the saved index path back to the user.
+3. Mention that the data comes from geminicli.com/llms.txt.
+"""

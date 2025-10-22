@@ -6,6 +6,7 @@ Experimental community project that gives Gemini CLI a helper MCP server. It is 
 - `search_gemini_docs`: search Gemini CLI documentation from a local copy of `https://geminicli.com/llms.txt`
 - `configure_gemini_cli`: change Gemini CLI settings using natural-language instructions
 - `query_gemini_config`: inspect current Gemini CLI settings without editing them
+- `update_gemini_docs`: refresh the cached documentation bundle (`llms.txt` + search index)
 
 ## Install as a Gemini CLI extension
 ```bash
@@ -30,7 +31,7 @@ If you cannot use extensions, add the server directly:
 ```
 
 ## Refreshing documentation
-`npm run build:docs` downloads the latest `llms.txt`, stores it in `docs/`, and rebuilds the search index with `geminicli.com/docs` links. Run it whenever you want newer documentation before rebuilding the TypeScript server.
+`npm run build:docs` downloads the latest `llms.txt`, stores it in `docs/`, and rebuilds the search index with `geminicli.com/docs` links. Run it whenever you want newer documentation before rebuilding the TypeScript server. Inside Gemini CLI you can also run `/updatedocs` to trigger the same refresh without leaving the REPL.
 
 ## Development notes
 - Requires Node.js 20+
