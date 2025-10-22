@@ -1,11 +1,13 @@
 {
   "name": "gemini-cli-assistant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Self-documentation and configuration management for Gemini CLI",
   "mcpServers": {
     "gemini-assistant": {
       "command": "node",
-      "args": ["${extensionPath}${/}dist${/}server.js"],
+      "args": [
+        "${extensionPath}${/}dist${/}server.js"
+      ],
       "cwd": "${extensionPath}",
       "description": "Provides documentation search and configuration management tools"
     }

@@ -84,7 +84,7 @@ Use this tool to refresh the locally cached documentation (`docs/llms.txt` and `
 **How to use:**
 1. Call the tool directly (no inputs). It downloads `llms.txt` and rebuilds the search index.
 2. Confirm the refresh by reporting the document count and any notable categories in your reply.
-3. Mention the cache lives at `docs/llms.txt` if the user wants to inspect it.
+3. Mention the cache lives at `docs/llms.txt` and `docs/gemini-cli-readme.md` if the user wants to inspect it.
 
 **Shortcut:** The `/updatedocs` command triggers this tool automatically.
 

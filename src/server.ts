@@ -44,7 +44,7 @@ async function main() {
   // Create MCP server instance
   const server = new McpServer({
     name: 'gemini-cli-assistant',
-    version: '1.0.0',
+    version: '1.0.1',
   });
 
   logger.info('Registering tools...');

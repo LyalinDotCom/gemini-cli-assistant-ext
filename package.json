@@ -1,6 +1,6 @@
 {
   "name": "gemini-cli-assistant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for Gemini CLI self-documentation and configuration",
   "main": "dist/server.js",
   "type": "module",

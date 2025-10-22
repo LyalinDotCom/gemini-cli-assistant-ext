@@ -31,7 +31,7 @@ If you cannot use extensions, add the server directly:
 ```
 
 ## Refreshing documentation
-`npm run build:docs` downloads the latest `llms.txt`, stores it in `docs/`, and rebuilds the search index with `geminicli.com/docs` links. Run it whenever you want newer documentation before rebuilding the TypeScript server. Inside Gemini CLI you can also run `/updatedocs` to trigger the same refresh without leaving the REPL.
+`npm run build:docs` downloads the latest `llms.txt` plus the upstream Gemini CLI README, stores them in `docs/`, and rebuilds the search index with `geminicli.com/docs` links. Run it whenever you want newer documentation before rebuilding the TypeScript server. Inside Gemini CLI you can also run `/updatedocs` to trigger the same refresh without leaving the REPL.
 
 ## Development notes
 - Requires Node.js 20+

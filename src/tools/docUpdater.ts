@@ -10,6 +10,7 @@ export const updateDocsOutputSchema = {
   categories: z.record(z.number()),
   llmsPath: z.string(),
   indexPath: z.string(),
+  readmePath: z.string(),
   buildDate: z.string(),
   version: z.string(),
 };
@@ -24,6 +25,7 @@ export async function updateGeminiDocs(): Promise<CallToolResult> {
       categories: result.categories,
       llmsPath: result.llmsPath,
       indexPath: result.indexPath,
+      readmePath: result.readmePath,
       buildDate: result.buildDate,
       version: result.version,
     };

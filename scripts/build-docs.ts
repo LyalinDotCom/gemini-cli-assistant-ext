@@ -16,10 +16,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
 
 async function buildDocs(): Promise<void> {
-  console.log('Downloading llms.txt from geminicli.com...');
+  console.log('Downloading llms.txt and project README from geminicli.com repositories...');
   const result = await updateDocsIndex({ projectRoot: PROJECT_ROOT });
   console.log('✓ Download complete and index rebuilt');
   console.log(`Saved llms copy to ${result.llmsPath}`);
+  console.log(`Saved project README to ${result.readmePath}`);
   console.log(`Wrote search index to ${result.indexPath}`);
   console.log(`Discovered ${result.documentCount} documentation sections`);
 
