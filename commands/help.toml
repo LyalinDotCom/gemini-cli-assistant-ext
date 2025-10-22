@@ -1,0 +1,15 @@
+prompt = """
+IMPORTANT: You MUST use the `search_gemini_docs` MCP tool to answer this question.
+
+The user is asking for help with: {{ARGS}}
+
+Follow these steps:
+
+1. **Search the documentation** using the `search_gemini_docs` tool with the user's query
+2. **Read the excerpts carefully** - they contain the full relevant content
+3. **Answer directly** from the excerpt content - don't just say "I found docs"
+4. **Include the live URL** at the end as a reference only
+5. **DO NOT fetch URLs** - all information is in the excerpt
+
+If the search returns no good results, say so clearly and suggest the user check the full documentation at https://geminicli.com/docs/
+"""

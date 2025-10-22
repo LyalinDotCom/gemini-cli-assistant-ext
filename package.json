@@ -1,0 +1,47 @@
+{
+  "name": "gemini-cli-assistant",
+  "version": "1.0.0",
+  "description": "MCP server for Gemini CLI self-documentation and configuration",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:docs": "tsx scripts/build-docs.ts",
+    "build:all": "npm run build:docs && npm run build",
+    "dev": "tsc --watch",
+    "dev:docs": "nodemon --watch scripts/build-docs.ts --exec npm run build:docs",
+    "start": "node dist/server.js",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "clean": "rm -rf dist docs/llms.txt docs/index.json",
+    "prepare": "npm run build:all"
+  },
+  "keywords": [
+    "gemini-cli-extension",
+    "mcp",
+    "gemini",
+    "cli",
+    "documentation",
+    "configuration",
+    "self-help"
+  ],
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/gemini-cli-assistant"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "nodemon": "^3.1.9",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

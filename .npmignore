@@ -1,0 +1,29 @@
+# Source files (included in dist)
+src/
+tsconfig.json
+
+# Development files
+*.md
+!README.md
+!package.json
+
+# Tests
+*.test.ts
+*.spec.ts
+__tests__/
+
+# Development dependencies
+node_modules/
+
+# Build artifacts
+*.tsbuildinfo
+*.log
+
+# Keep only what's needed for the extension to run
+# - dist/
+# - docs/index.json
+# - docs/llms.txt
+# - gemini-extension.json
+# - GEMINI.md
+# - package.json
+# - README.md
