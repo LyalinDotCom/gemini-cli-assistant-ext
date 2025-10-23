@@ -1,8 +1,11 @@
 {
   "name": "gemini-cli-assistant",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "MCP server for Gemini CLI self-documentation and configuration",
   "main": "dist/server.js",
+  "bin": {
+    "gemini-cli-assistant": "dist/server.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
@@ -32,13 +35,13 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
     "nodemon": "^3.1.9",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.3",
     "vitest": "^2.1.8"
   },
   "engines": {

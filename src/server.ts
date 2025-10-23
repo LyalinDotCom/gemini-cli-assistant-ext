@@ -1,14 +1,9 @@
 #!/usr/bin/env node
 
-/**
- * Gemini CLI Assistant MCP Server
- *
- * Provides self-documentation and configuration management tools for Gemini CLI
- */
-
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { logger, LogLevel } from './utils/logger.js';
+import packageJson from '../package.json' with { type: 'json' };
 import {
   searchGeminiDocs,
   searchDocsInputSchema,
@@ -39,12 +34,51 @@ if (process.env.DEBUG === 'true') {
  * Main server initialization
  */
 async function main() {
-  logger.info('Starting Gemini CLI Assistant MCP Server...');
+  const rawArgs = process.argv.slice(2);
+  const firstArg = rawArgs[0];
+
+  if (firstArg && !firstArg.startsWith('-')) {
+    if (firstArg === 'mcp') {
+      process.argv.splice(2, 1);
+    } else {
+      console.error(`Unknown command: ${firstArg}`);
+      console.log('Usage:');
+      console.log('  gemini-cli-assistant mcp          Start the MCP server');
+      console.log('  gemini-cli-assistant --help       Show help information');
+      console.log('  gemini-cli-assistant --version    Show the package version');
+      process.exit(1);
+    }
+  }
+
+  const serverName =
+    (packageJson?.name as string | undefined) ?? 'gemini-cli-assistant';
+  const serverVersion =
+    (packageJson?.version as string | undefined) ?? '0.0.0';
+
+  if (process.argv.includes('--version')) {
+    console.log(serverVersion);
+    return;
+  }
+
+  if (process.argv.includes('--help')) {
+    console.log(`${serverName} MCP server (v${serverVersion})`);
+    console.log('Commands:');
+    console.log('  mcp        Start the MCP server over stdio');
+    console.log('');
+    console.log('Flags:');
+    console.log('  --help     Show this message');
+    console.log('  --version  Print the package version');
+    console.log('');
+    console.log('Use via npx: npx -y github:LyalinDotCom/gemini-cli-assistant-ext mcp');
+    return;
+  }
+
+  logger.info(`Starting ${serverName} MCP Server (v${serverVersion})...`);
 
   // Create MCP server instance
   const server = new McpServer({
-    name: 'gemini-cli-assistant',
-    version: '1.0.1',
+    name: serverName,
+    version: serverVersion,
   });
 
   logger.info('Registering tools...');

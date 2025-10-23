@@ -11,19 +11,23 @@ Experimental community project that gives Gemini CLI a helper MCP server. It is 
 ## Install as a Gemini CLI extension
 ```bash
 npm install
-npm run build:all
+npm run build
 gemini extensions link .
 ```
-Restart Gemini CLI and the extension loads automatically.
+Restart Gemini CLI and the extension loads automatically. The extension launches the MCP server with `npx -y github:LyalinDotCom/gemini-cli-assistant-ext mcp`, so the build step ensures the compiled output exists when the remote package is prepared.
 
 ## Manual MCP registration
 If you cannot use extensions, add the server directly:
 ```json
 {
   "mcpServers": {
-    "gemini-assistant": {
-      "command": "node",
-      "args": ["/absolute/path/to/gemini-cli-assistant-ext/dist/server.js"],
+    "gemini-cli-assistant": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "github:LyalinDotCom/gemini-cli-assistant-ext",
+        "mcp"
+      ],
       "trust": true
     }
   }
@@ -31,7 +35,7 @@ If you cannot use extensions, add the server directly:
 ```
 
 ## Refreshing documentation
-`npm run build:docs` downloads the latest `llms.txt` plus the upstream Gemini CLI README, stores them in `docs/`, and rebuilds the search index with `geminicli.com/docs` links. Run it whenever you want newer documentation before rebuilding the TypeScript server. Inside Gemini CLI you can also run `/updatedocs` to trigger the same refresh without leaving the REPL.
+`npm run build:docs` downloads the latest `llms.txt` plus the upstream Gemini CLI README, stores them in `docs/`, and rebuilds the search index with `geminicli.com/docs` links. Run it whenever you want newer documentation before rebuilding the TypeScript server. Inside Gemini CLI you can also run `/updatedocs` to trigger the same refresh without leaving the REPL. These steps are also executed automatically during `npm install` (via `prepare`) so the GitHub-driven `npx` install has a fresh index.
 
 ## Development notes
 - Requires Node.js 20+
